@@ -27,18 +27,15 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-btn to="/" text  class="mr-2" > Home </v-btn>
+      <v-btn to="/about"  text  class="mr-2" > About </v-btn>
+      <v-btn to="/contact" text  class="mr-2" > Contact </v-btn>
+      <v-btn to="/members"  text  class="mr-2" > Members  </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      {{clientid}}
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
@@ -50,11 +47,15 @@ export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    
   },
+  data() {
+    return{
+      clientid: process.env.VUE_APP_AUTH0_CONFIG_DOMAIN
+    }
+  },
+  beforeCreate(){
 
-  data: () => ({
-    //
-  }),
+  }
 };
 </script>
